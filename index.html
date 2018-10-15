@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSV Builder</title>
+</head>
+<body>
+    <p>CSV Builder</p>
+    <hr>
+
+    <p>
+        Пример csv:
+        <p>
+            <i>кот;собака;попугай;<br>
+                волк;медведь;лев;<br>
+                акула;кит;</i>
+        </p>
+    </p>
+    <hr>
+    <button onClick="build()">Создать csv</button>
+
+    <a href="./csv/animal.csv" download="./animal.csv" target="_blank">Скачать файл</a>
+
+    <div>Разделитель: <input type="text" value=";" id="separator"/></div>
+
+    <p>Результат</p>
+    <div id='result_csv'>
+    </div>
+
+
+    <script>
+        var animals = [
+            ['кот','собака','попугай'],
+            ['волк','медведь','лев'],
+            ['акула','кит'],
+        ]
+
+        function build(){
+            var separator = document.getElementById('separator').value
+
+            var el = document.getElementById('result_csv')
+            
+
+            var text_tmp = '';
+            var text_csv = animals.forEach(animal => {
+                text_tmp += animal.join(separator) + separator + "<br>"
+            })
+
+            el.innerHTML = '<i>' + text_tmp + '</i>'
+        }
+    </script>
+
+</body>
+</html>
